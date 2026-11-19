@@ -1,0 +1,121 @@
+---
+import { Image } from 'astro:assets';
+import foto from '../assets/foto-educa.webp';
+---
+
+<section class="hero" aria-labelledby="hero-titulo">
+  <div class="wrap hero__grid">
+    <div class="hero__text">
+      <p class="eyebrow">Fundación Colombia Incluyente</p>
+      <h1 id="hero-titulo">Formación virtual para el empleo, el emprendimiento y la inclusión.</h1>
+      <p class="lead">
+        Colombia Incluyente Educa es la plataforma de formación virtual de la Fundación, con cursos,
+        videos, cápsulas y webinars para aprender a tu ritmo.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#materiales">
+          Descarga los materiales
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"></path></svg>
+        </a>
+        <a class="btn btn--ghost" href="#diplomados">Conoce los diplomados</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <div class="hero__field" aria-hidden="true"></div>
+      <Image
+        src={foto}
+        alt="Participantes de un taller de confección de la Fundación trabajan en máquinas de coser"
+        widths={[420, 640, 900]}
+        sizes="(min-width: 64rem) 30rem, 90vw"
+        loading="eager"
+        fetchpriority="high"
+        class="hero__photo"
+      />
+      <p class="hero__tag">Aprende a tu ritmo, con acompañamiento</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: clamp(2.5rem, 6vw, 5rem) var(--section-y);
+    overflow: hidden;
+  }
+
+  .hero__grid {
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 4rem);
+    align-items: center;
+  }
+
+  .hero__text {
+    display: grid;
+    gap: 1.5rem;
+    justify-items: start;
+  }
+
+  h1 {
+    font-size: clamp(2.125rem, 5.2vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .hero__media {
+    position: relative;
+    max-width: 32rem;
+    width: 100%;
+    justify-self: center;
+  }
+
+  .hero__field {
+    position: absolute;
+    inset: 8% -8% -6% 10%;
+    border-radius: var(--leaf-radius);
+    background: var(--sun);
+  }
+
+  .hero__photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 40% center;
+    border-radius: var(--leaf-radius);
+  }
+
+  .hero__tag {
+    position: absolute;
+    left: -0.75rem;
+    bottom: 1.5rem;
+    max-width: 15rem;
+    padding: 0.875rem 1.125rem;
+    border-radius: 1rem 1rem 1rem 0.25rem;
+    background: var(--white);
+    box-shadow: 0 18px 40px -20px var(--neutral-900);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--neutral-900);
+  }
+
+  @media (min-width: 64rem) {
+    .hero__grid {
+      grid-template-columns: 1.15fr 1fr;
+    }
+
+    .hero__media {
+      justify-self: end;
+    }
+
+    .hero__tag {
+      left: -2.5rem;
+    }
+  }
+</style>

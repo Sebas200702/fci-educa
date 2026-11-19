@@ -1,0 +1,166 @@
+---
+import { modulos } from '../lib/oferta';
+---
+
+<section class="materiales" id="materiales" aria-labelledby="materiales-titulo">
+  <div class="wrap">
+    <div class="materiales__head reveal">
+      <p class="eyebrow">Materiales</p>
+      <h2 id="materiales-titulo" class="section-title">Diplomado Constructor Social de Territorios de Paz</h2>
+      <p class="lead">Lecturas de los dos módulos del diplomado, en PDF, libres para descargar.</p>
+    </div>
+
+    <div class="modulos">
+      {
+        modulos.map((m, n) => (
+          <article class="modulo reveal" aria-labelledby={`modulo-${n + 1}`}>
+            <header class="modulo__head">
+              <p class="modulo__nombre">{m.nombre}</p>
+              <h3 id={`modulo-${n + 1}`}>{m.tema}</h3>
+            </header>
+            <ol class="capitulos">
+              {m.capitulos.map((c, i) => (
+                <li>
+                  <a class="capitulo" href={`/materiales/${c.archivo}`} download>
+                    <span class="capitulo__num" aria-hidden="true">{i + 1}</span>
+                    <span class="capitulo__texto">
+                      <span class="capitulo__titulo">{c.titulo}</span>
+                      <span class="capitulo__meta">
+                        PDF · {c.paginas} páginas · {c.peso}
+                      </span>
+                    </span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M6 10l6 6 6-6M5 20h14" /></svg>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .materiales {
+    padding-block: var(--section-y);
+    background: var(--neutral-900);
+    color: var(--neutral-200);
+  }
+
+  .materiales .section-title,
+  .materiales h3 {
+    color: var(--white);
+  }
+
+  .materiales .eyebrow {
+    color: var(--sun);
+  }
+
+  .materiales .lead {
+    color: var(--neutral-200);
+  }
+
+  .materiales__head {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+  }
+
+  .modulos {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .modulo {
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: var(--leaf-radius);
+    background: color-mix(in oklab, var(--white) 6%, transparent);
+  }
+
+  .modulo__head {
+    margin-bottom: 1.25rem;
+  }
+
+  .modulo__nombre {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--sun);
+  }
+
+  .modulo h3 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-top: 0.25rem;
+  }
+
+  .capitulos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .capitulo {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    background: color-mix(in oklab, var(--white) 4%, transparent);
+    transition: background-color 0.25s var(--ease-out);
+  }
+
+  .capitulo:hover {
+    background: color-mix(in oklab, var(--sun) 16%, transparent);
+  }
+
+  .capitulo__num {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: var(--sun);
+    color: var(--neutral-900);
+    font-family: var(--font-display);
+    font-weight: 800;
+  }
+
+  .capitulo__texto {
+    display: grid;
+    gap: 0.125rem;
+  }
+
+  .capitulo__titulo {
+    color: var(--white);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .capitulo__meta {
+    font-size: 0.8125rem;
+    color: var(--neutral-200);
+  }
+
+  .capitulo svg {
+    width: 1.375rem;
+    height: 1.375rem;
+    color: var(--sun);
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  .capitulo:hover svg {
+    transform: translateY(2px);
+  }
+
+  @media (min-width: 64rem) {
+    .modulos {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+</style>

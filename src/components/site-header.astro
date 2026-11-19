@@ -1,0 +1,84 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo-educa.png';
+import { ORG_URL } from '../lib/site';
+---
+
+<header class="header">
+  <div class="wrap header__inner">
+    <a href="/" class="header__logo" aria-label="Colombia Incluyente Educa, inicio">
+      <Image src={logo} alt="" width={168} loading="eager" />
+    </a>
+    <nav aria-label="Principal">
+      <ul class="header__nav">
+        <li><a href="#oferta">Qué ofrece</a></li>
+        <li><a href="#diplomados">Diplomados</a></li>
+        <li><a href="#materiales">Materiales</a></li>
+        <li class="header__org"><a href={ORG_URL}>Fundación</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in oklab, var(--white) 88%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--neutral-100);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 4.5rem;
+  }
+
+  .header__logo img {
+    width: clamp(8.5rem, 22vw, 10.5rem);
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.75rem, 2.5vw, 2rem);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .header__nav a {
+    text-decoration: none;
+    color: var(--neutral-700);
+    padding-block: 0.5rem;
+    background: linear-gradient(var(--sun), var(--sun)) left bottom / 0 3px no-repeat;
+    transition: background-size 0.3s var(--ease-out);
+  }
+
+  .header__nav a:hover {
+    color: var(--neutral-900);
+    background-size: 100% 3px;
+  }
+
+  .header__org a {
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    background: var(--neutral-900);
+    color: var(--white);
+  }
+
+  .header__org a:hover {
+    color: var(--white);
+    background: var(--brand-700);
+  }
+
+  @media (max-width: 47.99rem) {
+    .header__nav li:not(.header__org) {
+      display: none;
+    }
+  }
+</style>

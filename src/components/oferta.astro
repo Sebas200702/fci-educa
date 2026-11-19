@@ -1,0 +1,125 @@
+---
+import { familias, modalidades, publicos } from '../lib/oferta';
+
+const acentos = ['var(--rose)', 'var(--sky)', 'var(--brand-500)', 'var(--leaf)'];
+---
+
+<section class="oferta" id="oferta" aria-labelledby="oferta-titulo">
+  <div class="wrap">
+    <div class="oferta__head reveal">
+      <p class="eyebrow">Qué ofrece</p>
+      <h2 id="oferta-titulo" class="section-title">Cuatro familias de contenidos</h2>
+      <p class="lead">Formación híbrida, a tu ritmo y con acompañamiento, para personas, empresas y aliados.</p>
+    </div>
+
+    <ol class="familias">
+      {
+        familias.map((f, i) => (
+          <li class="familia reveal" style={`--acento: ${acentos[i]}`}>
+            <span class="familia__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{f.titulo}</h3>
+            <ul class="chips">
+              {f.temas.map((t) => <li class="chip">{t}</li>)}
+            </ul>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="oferta__extra">
+      <div class="bloque reveal">
+        <h3>Cómo funciona</h3>
+        <ul class="chips">{modalidades.map((m) => <li class="chip">{m}</li>)}</ul>
+      </div>
+      <div class="bloque reveal">
+        <h3>Para quién</h3>
+        <ul class="chips">{publicos.map((p) => <li class="chip">{p}</li>)}</ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .oferta {
+    padding-block: var(--section-y);
+    background: var(--brand-50);
+  }
+
+  .oferta__head {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+  }
+
+  .familias {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .familia {
+    position: relative;
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+    padding: 1.75rem 1.5rem 1.5rem;
+    border-radius: 1.5rem 0.375rem 1.5rem 0.375rem;
+    background: var(--white);
+    border-top: 4px solid var(--acento);
+    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+  }
+
+  .familia:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 40px -28px var(--neutral-900);
+  }
+
+  .familia__num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 2.25rem;
+    line-height: 1;
+    color: var(--acento);
+  }
+
+  .familia h3 {
+    font-size: 1.1875rem;
+    font-weight: 700;
+  }
+
+  .oferta__extra {
+    display: grid;
+    gap: 2rem;
+    margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding-top: 2rem;
+    border-top: 1px solid var(--brand-100);
+  }
+
+  .bloque {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .bloque h3 {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  @media (min-width: 40rem) {
+    .familias {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .familias {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .oferta__extra {
+      grid-template-columns: 1fr 1.6fr;
+    }
+  }
+</style>

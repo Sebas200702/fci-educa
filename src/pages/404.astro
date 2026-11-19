@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/base-layout.astro';
+import SiteFooter from '../components/site-footer.astro';
+import SiteHeader from '../components/site-header.astro';
+---
+
+<BaseLayout title="Página no encontrada · Colombia Incluyente Educa" description="La página que buscas no existe." noindex>
+  <SiteHeader />
+  <main id="contenido" class="wrap nf">
+    <p class="eyebrow">Error 404</p>
+    <h1>Esta página ya no existe</h1>
+    <p class="lead">Renovamos el sitio y algunas direcciones antiguas dejaron de funcionar.</p>
+    <a class="btn btn--primary" href="/">Volver al inicio</a>
+  </main>
+  <SiteFooter />
+</BaseLayout>
+
+<style>
+  .nf {
+    display: grid;
+    gap: 1.25rem;
+    justify-items: start;
+    padding-block: var(--section-y);
+    min-height: 50vh;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+  }
+</style>

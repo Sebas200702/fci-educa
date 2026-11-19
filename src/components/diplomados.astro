@@ -1,0 +1,142 @@
+---
+import { cursos } from '../lib/oferta';
+---
+
+<section class="diplomados" id="diplomados" aria-labelledby="diplomados-titulo">
+  <div class="wrap">
+    <div class="diplomados__head reveal">
+      <p class="eyebrow">Cursos y diplomados</p>
+      <h2 id="diplomados-titulo" class="section-title">Lo que se ha cursado en Educa</h2>
+      <p class="lead">
+        Estamos renovando la plataforma de cursos, así que las inscripciones en línea están
+        pausadas. Los materiales del Diplomado Constructor Social de Territorios de Paz siguen
+        disponibles para descargar.
+      </p>
+    </div>
+
+    <ul class="cursos">
+      {
+        cursos.map((c) => (
+          <li class="curso reveal">
+            <p class="curso__temas">{c.temas.join(' · ')}</p>
+            <h3>{c.nombre}</h3>
+            <dl class="curso__datos">
+              <div>
+                <dt>Clases</dt>
+                <dd>{c.clases}</dd>
+              </div>
+              <div>
+                <dt>Nivel</dt>
+                <dd>{c.nivel}</dd>
+              </div>
+              <div>
+                <dt>Costo</dt>
+                <dd>Gratis</dd>
+              </div>
+            </dl>
+            {c.materiales && (
+              <a class="curso__link" href="#materiales">
+                Ver materiales
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </a>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .diplomados {
+    padding-block: var(--section-y);
+  }
+
+  .diplomados__head {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: clamp(2rem, 5vw, 3rem);
+  }
+
+  .cursos {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .curso {
+    display: grid;
+    grid-template-rows: auto 1fr auto auto;
+    gap: 1rem;
+    padding: 1.75rem;
+    border-radius: 1.5rem;
+    box-shadow: inset 0 0 0 1px var(--neutral-200);
+    transition: box-shadow 0.3s var(--ease-out);
+  }
+
+  .curso:hover {
+    box-shadow: inset 0 0 0 2px var(--sun);
+  }
+
+  .curso:first-child {
+    background: var(--sun-soft);
+    box-shadow: none;
+  }
+
+  .curso__temas {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--brand-700);
+  }
+
+  .curso h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  .curso__datos {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid color-mix(in oklab, var(--neutral-900) 10%, transparent);
+  }
+
+  .curso__datos dt {
+    font-size: 0.75rem;
+    color: var(--neutral-500);
+  }
+
+  .curso__datos dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--neutral-900);
+  }
+
+  .curso__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--brand-700);
+    text-decoration: none;
+  }
+
+  .curso__link svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  .curso__link:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (min-width: 56rem) {
+    .cursos {
+      grid-template-columns: 1.3fr 1fr 1fr;
+    }
+  }
+</style>

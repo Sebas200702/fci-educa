@@ -1,0 +1,250 @@
+/*
+ * Colombia Incluyente Educa. Tokens follow the FCI landing design system
+ * ("Calidez con evidencia"): Montserrat for display, Inter for text, brand orange scale,
+ * cool neutrals and the line accents. Educa's own accent is tuscan sun.
+ */
+
+:root {
+  --brand-50: #fef8ec;
+  --brand-100: #fcecc9;
+  --brand-400: #f4a734;
+  --brand-500: #ed8113;
+  --brand-600: #d25e0d;
+  --brand-700: #ae400f;
+
+  --neutral-50: #f9fafb;
+  --neutral-100: #f6f7f8;
+  --neutral-200: #e5e8eb;
+  --neutral-500: #6c757f;
+  --neutral-600: #4d5961;
+  --neutral-700: #39454f;
+  --neutral-800: #212d35;
+  --neutral-900: #121c26;
+
+  --sun: #facb59;
+  --sun-soft: #fdeec6;
+  --sky: #28ade4;
+  --sky-700: #1a6f94;
+  --petal: #c468a4;
+  --rose: #e66986;
+  --leaf: #2a7d3a;
+
+  --white: #ffffff;
+
+  --font-display: 'Montserrat Variable', 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  --container: 72rem;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --section-y: clamp(3.5rem, 8vw, 6.5rem);
+  /* Leaf: the FCI landing shape, two opposite corners rounded hard. */
+  --leaf-radius: 2.75rem 0.5rem 2.75rem 0.5rem;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--neutral-700);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--neutral-900);
+  line-height: 1.18;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--sky);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 50;
+  padding: 0.75rem 1rem;
+  background: var(--neutral-900);
+  color: var(--white);
+  border-radius: 0.5rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--container) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-700);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.75rem;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--sun);
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-top: 0.75rem;
+}
+
+.lead {
+  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  color: var(--neutral-600);
+  max-width: 38rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition:
+    transform 0.25s var(--ease-out),
+    background-color 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out);
+}
+
+.btn svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  transition: transform 0.25s var(--ease-out);
+}
+
+.btn--primary {
+  background: var(--brand-600);
+  color: var(--white);
+}
+
+.btn--primary:hover {
+  background: var(--brand-700);
+  box-shadow: 0 10px 24px -12px var(--brand-700);
+}
+
+.btn--ghost {
+  color: var(--neutral-900);
+  box-shadow: inset 0 0 0 2px var(--neutral-200);
+}
+
+.btn--ghost:hover {
+  box-shadow: inset 0 0 0 2px var(--neutral-900);
+}
+
+.btn:hover svg {
+  transform: translateX(3px);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+  background: var(--white);
+  box-shadow: inset 0 0 0 1px var(--neutral-200);
+  font-size: 0.875rem;
+  color: var(--neutral-700);
+}
+
+/* Entrance: content is visible without JS; the class only exists when JS runs. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.7s var(--ease-out),
+    transform 0.7s var(--ease-out);
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
